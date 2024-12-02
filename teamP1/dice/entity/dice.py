@@ -7,10 +7,10 @@ class Dice:
         Dice.__counter += 1
 
     def __str__(self):
-        return f"dice number: {self.__number}"
+        return f"Dice(ID: {self.__id}, Number: {self.__diceNumber})"
 
     def getId(self):
         return self.__id
 
     def getDiceNumber(self):
-        return self.__number
+        return self.__diceNumber
