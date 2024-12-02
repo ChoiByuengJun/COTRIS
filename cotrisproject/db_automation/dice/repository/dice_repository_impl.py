@@ -7,6 +7,7 @@ from dice.repository.dice_repository import DiceRepository
 
 
 class DiceRepositoryImpl(DiceRepository):
+    __counter = 1
     __instance = None
 
     MIN = 1
@@ -25,10 +26,13 @@ class DiceRepositoryImpl(DiceRepository):
 
         return cls.__instance
 
+
     def create(self):
-        randomNumber = random.randint(self.MIN, self.MAX)
-        dice = Dice(number=randomNumber)
-        dice.save()
+        for _ in range(self.__counter):
+            self.__counter = 1
+            randomNumber = random.randint(self.MIN, self.MAX)
+            dice = Dice(number=randomNumber)
+            dice.save()
 
         # return dice
         # Web Page에서 주고 받는 데이터는 전부 JSON 형식을 따름
