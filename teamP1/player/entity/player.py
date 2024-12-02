@@ -5,9 +5,10 @@ class Player:
         self.__playerName = playerName
         self.__id = Player.__counter
         Player.__counter += 1
+        self.__diceIdList = []
+
+    def addDiceId(self, diceId):
+        self.__diceIdList.append(diceId)
 
     def __str__(self):
-        return f"Player(name: {self.__playerName}, diceId: {self.__diceIdList})"
-
-    def getId(self):
-        return self.__id
+        return f"{self.__playerName} (주사위: {self.__diceIdList})"
