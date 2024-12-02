@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
 
+from abc import ABC, abstractmethod
 
 class DiceRepository(ABC):
 
@@ -8,9 +8,9 @@ class DiceRepository(ABC):
         pass
 
     @abstractmethod
-    def findById(self, id):
+    def rollDice(self):
         pass
 
     @abstractmethod
-    def findAll(self):
+    def findById(self, diceId):
         pass
