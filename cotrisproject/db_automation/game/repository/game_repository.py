@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class GameRepository(ABC):
 
     @abstractmethod
@@ -7,9 +8,9 @@ class GameRepository(ABC):
         pass
 
     @abstractmethod
-    def set_player_index_list_to_map(self, player_index_list, dice_id_list):
+    def setPlayerIndexListToMap(self, playerIndexList, diceIdList):
         pass
 
     @abstractmethod
-    def update_player_dice_game_map(self, player_index_list, dice_id_list):
+    def updatePlayerDiceGameMap(self, playerIndexList, diceIdList):
         pass

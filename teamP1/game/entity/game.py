@@ -6,10 +6,10 @@ class Game:
     def getPlayerCount(self):
         return self.__playerCount
 
-    def getPlayerDiceGameMap(self): #플레이어와 플레이어가 굴린 매핑정보 반환
+    def getPlayerDiceGameMap(self): #플레이어와 플레이어가 굴린 매핑 정보 반환
         return self.__playerDiceGameMap
 
-    def setPlayerIndexListToMap(self, playerIndexList, diceIdList): #각 플레이어와 그들이 굴린 첫 번째 주사위를 매핑합니다.
+    def setPlayerIndexListToMap(self, playerIndexList, diceIdList): #각 플레이어와 그들이 굴린 주사위를 매핑합니다.
         self.__playerDiceGameMap = {index: [diceId] for index, diceId in zip(playerIndexList, diceIdList)}
 
     def updatePlayerIndexListToMap(self, playerIndexList, diceIdList):
