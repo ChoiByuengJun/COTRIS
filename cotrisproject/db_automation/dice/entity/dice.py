@@ -3,16 +3,16 @@ from django.db import models
 
 class Dice(models.Model):
     id = models.AutoField(primary_key=True)
-    number = models.IntegerField()
+    dice_number = models.IntegerField()
 
     def __str__(self):
-        return f"주사위 id: {self.id}, 눈금: {self.number}"
+        return f"Dice id: {self.id}, 눈금: {self.dice_number}"
 
-    def getId(self):
+    def get_id(self):
         return self.id
 
-    def getNumber(self):
-        return self.number
+    def get_dice_number(self):
+        return self.dice_number
 
     class Meta:
         db_table = "dice"
