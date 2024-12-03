@@ -59,4 +59,3 @@ class GameServiceImpl(GameService):
             print("무승부입니다!")
         else:
             print(f"승자는 플레이어 {winners[0]}입니다!")
-

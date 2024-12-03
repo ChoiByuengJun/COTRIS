@@ -13,3 +13,6 @@ class Dice(models.Model):
 
     def get_dice_number(self):
         return self.dice_number
+
+    class Meta:
+        db_table = "dice"
