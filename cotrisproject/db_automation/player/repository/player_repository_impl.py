@@ -1,10 +1,10 @@
-from django.shortcuts import get_object_or_404
-
 from player.entity.player import Player
+from player.repository.player_repository import PlayerRepository
 
 
-class PlayerRepositoryImpl:
+class PlayerRepositoryImpl(PlayerRepository):
     __instance = None
+    __players = []
 
     def __new__(cls):
         if cls.__instance is None:
@@ -19,9 +19,11 @@ class PlayerRepositoryImpl:
 
     def createName(self):
         playerName = input("플레이어 이름을 입력하세요: ")
-        player = Player.objects.create(name=playerName)
-        return player
+        player = Player(playerName)
+        self.__players.append(player)
 
     def findById(self, playerId):
-        player = get_object_or_404(Player, id=playerId)
-        return player
+        for player in self.__players:
+            if player.getId() == playerId:
+                return player
+        return None
