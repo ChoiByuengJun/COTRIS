@@ -3,14 +3,34 @@ from game.repository.game_repository import GameRepository
 
 
 class GameRepositoryImpl(GameRepository):
-    @staticmethod
-    def create():
-        return Game.objects.create(player_count=2)
+    __instance = None
 
-    @staticmethod
-    def set_player_index_list_to_map(game, player_index_list, dice_id_list):
-        game.set_player_index_list_to_map(player_index_list, dice_id_list)
+    def __new__(cls):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
 
-    @staticmethod
-    def update_player_dice_game_map(game, player_index_list, dice_id_list):
-        game.update_player_index_list_to_map(player_index_list, dice_id_list)
+    @classmethod
+    def getInstance(cls):
+        if cls.__instance is None:
+            cls.__instance = cls()
+        return cls.__instance
+
+    def __init__(self):
+        self.__game = None
+
+    def create(self):
+        playerCount = 2  # 두 명의 플레이어로 고정
+        self.__game = Game(playerCount)
+
+    def setPlayerIndexListToMap(self, playerIndexList, diceIdList):
+        self.__game.setPlayerIndexListToMap(playerIndexList, diceIdList)
+
+    def updatePlayerDiceGameMap(self, playerIndexList, diceIdList):
+        self.__game.updatePlayerIndexListToMap(playerIndexList, diceIdList)
+
+    def getGame(self):
+        return self.__game
+
+    def getGamePlayerCount(self):
+        return self.__game.getPlayerCount()
