@@ -10,3 +10,5 @@ class Player(models.Model):
     def getId(self):
         return self.id  # 모델의 기본 ID 필드 사용
 
+    class Meta:
+        db_table = "player"

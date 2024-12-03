@@ -21,3 +21,7 @@ class Game(models.Model):
             else:
                 self.player_dice_game_map[str(index)] = [dice_id]
         self.save()
+
+    class Meta:
+        db_table = "game"
+
