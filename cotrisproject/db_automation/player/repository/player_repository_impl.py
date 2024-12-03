@@ -22,6 +22,8 @@ class PlayerRepositoryImpl(PlayerRepository):
         player = Player(playerName)
         self.__players.append(player)
 
+        return self.__players
+
     def findById(self, playerId):
         for player in self.__players:
             if player.getId() == playerId:
