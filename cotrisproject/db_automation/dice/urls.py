@@ -14,10 +14,4 @@ urlpatterns = [
          # 결론적으로 /dice/request-roll-dice 로 시작
          DiceController.as_view({ 'get': 'requestRollDice' }),
          name='주사위 굴리기'),
-    path('request-find-dice',
-         DiceController.as_view({ 'get': 'requestFindDice' }),
-         name='주사위 id로 찾기'),
-    path('request-every-dice',
-         DiceController.as_view({ 'get': 'requestEveryDice' }),
-         name='주사위 전체 정보 획득'),
 ]

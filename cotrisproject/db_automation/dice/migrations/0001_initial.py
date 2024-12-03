@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             name="Dice",
             fields=[
                 ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("number", models.IntegerField()),
+                ("dice_number", models.IntegerField()),
             ],
             options={
                 "db_table": "dice",
