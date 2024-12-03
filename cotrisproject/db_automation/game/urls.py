@@ -1,9 +1,16 @@
-from django.urls import path
-from game.controller.game_controller import start_game, roll_dice, print_status, check_winner
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+
+from game.controller.game_controller import GameController
+
+router = DefaultRouter()
+router.register(r"game", GameController, basename='game')
 
 urlpatterns = [
-    path('start/', start_game, name='start_game'),
-    path('<int:game_id>/roll/', roll_dice, name='roll_dice'),
-    path('<int:game_id>/status/', print_status, name='print_status'),
-    path('<int:game_id>/winner/', check_winner, name='check_winner'),
+    path('', include(router.urls)),
+    path('start/', GameController.as_view, name='startGame'),
+    path('<int:game_id>/roll/', GameController.as_view, name='rollDice'),
+    path('<int:game_id>/status/', GameController.as_view, name='printStatus'),
+    path('<int:game_id>/winner/', GameController.as_view, name='checkWinner'),
 ]
