@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     'dice',
+    'player',
 ]
 
 MIDDLEWARE = [
