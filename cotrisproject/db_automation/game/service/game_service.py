@@ -1,5 +1,5 @@
-from game.models import Game
-from dice.models import Dice
+from game.entity.game import Game
+from dice.entity.dice import Dice
 from django.db import transaction
 
 

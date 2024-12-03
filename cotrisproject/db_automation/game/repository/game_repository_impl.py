@@ -1,5 +1,5 @@
-from game.models import Game
-from repositories.game_repository import GameRepository
+from game.entity.game import Game
+from game.repository.game_repository import GameRepository
 
 
 class GameRepositoryImpl(GameRepository):

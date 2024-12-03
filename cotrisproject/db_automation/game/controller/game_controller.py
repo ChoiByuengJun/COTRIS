@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from game.services import GameService
+from game.service.game_service import GameService
 
 
 def start_game(request):
