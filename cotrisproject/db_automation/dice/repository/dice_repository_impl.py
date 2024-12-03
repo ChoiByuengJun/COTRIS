@@ -30,7 +30,7 @@ class DiceRepositoryImpl(DiceRepository):
         diceNumber = random.randint(self.MIN, self.MAX)
         dice = Dice(diceNumber)
         self.__diceList.append(dice)
-        return dice.get_id()
+        return self.__diceList
 
     def findById(self, diceId):
         for dice in self.__diceList:
