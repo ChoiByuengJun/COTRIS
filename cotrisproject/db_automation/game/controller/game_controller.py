@@ -15,9 +15,9 @@ class GameController(viewsets.ViewSet):
 
 
     def rollDice(self, request, gameId):
-        self.gameService.rollingDice(gameId)
+        diceNumber = self.gameService.rollingDice(gameId)
         return Response(
-            model_to_dict(self.rollDice),
+            diceNumber,
             status=status.HTTP_200_OK)
 
     def printStatus(self, request, gameId):
