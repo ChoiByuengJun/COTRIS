@@ -1,8 +1,8 @@
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
 
 
-class BuyerService(ABC):
+# class BuyerService(ABC):
 
-    @abstractmethod
-    def createBuyer(self, id):
-        pass
+    # @abstractmethod
+    # def createBuyer(self, id):
+        # pass
