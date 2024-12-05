@@ -26,9 +26,10 @@ class GameServiceImpl(GameService):
         print("게임을 시작합니다. 두 명의 플레이어가 참가합니다.")
 
     def rollingDice(self):
+
         playerIndexList = []
         diceIdList = []
-        gamePlayerCount = self.__gameRepository.getGamePlayerCount()
+        gamePlayerCount = self.__gameRepository.getGamePlayerCount() # 2명
 
         for playerIndex in range(gamePlayerCount):
             diceId = self.__diceRepository.rollDice()
