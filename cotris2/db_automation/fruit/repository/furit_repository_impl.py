@@ -1,12 +1,10 @@
+from fruit.furit_repository import FruitRepository
 from fruit.entity.fruit import Fruit
 
-# 과일 데이터 생성
-fruits = [
-    Fruit(fruitId=1, fruitNum=10),
-    Fruit(fruitId=2, fruitNum=10),
-    Fruit(fruitId=3, fruitNum=10),
-]
+class CreateFruit(FruitRepository):
+    def createFruit(self):
+        for _ in range(3):
+            fruit = Fruit.objects.create()  # Fruit 객체 생성 후 데이터베이스에 저장
+            print(f"과일 id: {fruit.Id}, 수량: {fruit.fruitNum}")
 
-# 데이터베이스에 저장
-for fruit in fruits:
-    fruit.save()
+
