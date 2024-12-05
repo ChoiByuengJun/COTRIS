@@ -22,8 +22,8 @@ class GameController(viewsets.ViewSet):
 
     def printStatus(self, request, gameId):
         self.gameService.printCurrentStatus(gameId)
-        return
+        return Response
 
     def checkWinner(self, request, gameId):
         self.gameService.checkWinner(gameId)
-        return
+        return Response
