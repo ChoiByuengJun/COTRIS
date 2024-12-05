@@ -12,3 +12,4 @@ class Buyer(models.Model):
 
     class Meta:
         db_table = "buyer"
+        # 왜 이런 일이..
