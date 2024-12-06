@@ -1,15 +1,32 @@
-from django.db import  models
-import  random
+from django.db import models
+
+# Create your models here.
+from order.entity.order import Order
 
 
 # Create my model here.
 class Process(models.Model):
-    fruit_id=models.AutoField(primary_key=True) # fruit_id: 과일의 id
-    buyer_id=models.AutoField(primary_key=True) # buyer_id: 구매자의 id
-    fruit_amount=models.IntegerField(random.randint(9, 11))  # 우리 재고에 있는 과일 수
-    buyer_requirements=models.IntegerField(default=2)    # 구매자가 요청한 과일 수
+    fruit_amount=models.AutoField(primary_key=True)
+    buyer_requirements=models.AutoField(primary_key=True)
+    id=models.ForeignKey(Order, on_delete=models.CASCADE, related_name="process")
+    amount=models.ForeignKey(Order, on_delete=models.CASCADE, related_name="process")
 
     def __str__(self):
         return (
-            f"fruit_id: {self.fruit_id}, buyer_ud: {self.buyer_id}, fruit_amount: {self.fruit_amount}, buyer_requirements: {self.buyer_requirements}"
+            f"재고에 있는 과일 개수: {self.fruit_amount}, 주문한 개수: {self.buyer_requirements}"
         )
+    
+    def get_fruit_amount(self):
+        return self.fruit_amount
+    
+    def get_buyer_requirements(self):
+        return self.buyer_requirements
+    
+    def get_id(self):
+        return self.id
+    
+    def get_amount(self):
+        return self.amount
+    
+    class Meta:
+        db_table="process"

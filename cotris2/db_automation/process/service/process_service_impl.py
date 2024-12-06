@@ -1,10 +1,14 @@
-import  random
-from django.db import  models
-from db_automation.process.service.process_service import ProcessService
+from process.service.process_service import ProcessService
+from buyer.repository.buyer_repository_impl import BuyerRepositoryImpl
+from db_automation.fruit.repository.fruit_repository_impl import FruitRepositoryImpl
+from order.repository.order_repository_impl import OrderRepositoryImpl
+from fruit.repository.fruit_repository_impl import FruitRepositoryImpl
 
 class ProcessServiceImpl(ProcessService):
 
-    def __init__(self, fruit_id, buyer_id, fruit_amount, buyer_requirements):
+    __instance=None
+
+    def __new__(cls):
         """
         구매자가 요청한 과일 개수와 우리 재고 리스트에 있는 과일 개수를 비교한다.
              1. 구매자가 요청한 과일 개수 <= 우리 재고 리스트에 있는 과일 개수
@@ -13,32 +17,28 @@ class ProcessServiceImpl(ProcessService):
                 -> 주문 불가, "해당 과일은 현재 수량이 부족합니다ㅠㅠ"
 
         Arguments:
-            fruit_id: 과일의 id
-            buyer_id: 구매자의 id
             fruit_amount: 우리 재고에 있는 과일 개수
             buyer_requirements: 구매자가 주문한 과일 개수
         """
-        self.fruit_id=models.AutoField(primary_key=True)
-        self.buyer_id=models.AutoField(primary_key=True)
-        self.fruit_amount=random.randint(9, 11)
-        self.buyer_requirements=random.randint(9, 11)
+        cls.__instance.__buyerRepository = BuyerRepositoryImpl.getInstance()
+        cls.__instance.__fruitRepository = FruitRepositoryImpl.getInstance()
+        cls.__instance.__orderRepository = OrderRepositoryImpl.getInstance()
 
-    def append_fruit_list(self, fruit_id, fruit_amount):
-        """fruit_id를 생성과 동시에 리스트에 담아 관리합니다"""
-        for i in self.fruit_amount:
-            fruit_list = []
-            fruit_list.append(i)
-        return fruit_list
+    @classmethod
+    def getInstance(cls):
+        if cls.__instance is None:
+            cls.__instance=cls()
+        
+        return cls.__instance
 
-    def append_buyer_list(self, buyer_id, buyer_requirements):
-        """buyer_id를 생성과 동시에 리스트에 담아 관리합니다."""
-        buyer_list=[]
-        for i in self.buyer_requirements:
-            buyer_list.append(i)
-        return buyer_list
-
-    def check_buyer_require(self, fruit_id, buyer_id, fruit_amount, buyer_requirements):
+    @classmethod
+    def check_buyer_require(self, fruit_amount, buyer_requirements):
         """구매자가 주문한 과일과 우리 재고 리스트에 있는 과일 개수를 비교"""
 
+        fruit_amount=self.__fruitRepository.createFruit.getFruitAmount()
+        buyer_requirements=self.__orderRepository.order.getAmount()
 
-        if fruit_id in
+        if fruit_amount >= buyer_requirements:
+            print(f">>>주문이 가능합니다!<<<")
+        elif fruit_amount < buyer_requirements:
+            print(f">>>주문이 불가합니다!<<<")

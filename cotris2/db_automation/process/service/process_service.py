@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from db_automation.process.service.process_service_impl import ProcessServiceImpl
 
 
-class ProcessService(ProcessServiceImpl):
+class ProcessService(ABC):
 
     @abstractmethod
-    def process_fruit(self):
+    def check_buyer_require(self):
+        """구매자가 요구하는 과일 개수와 리스트에 있는 과일 개수 비교"""
         pass
