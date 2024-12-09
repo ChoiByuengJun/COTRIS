@@ -1,5 +1,9 @@
 from django.db import models
 
+from buyer.entity.buyer import Buyer
+from fruit.entity.fruit import Fruit
+
+
 # Create your models here.
 class Order(models.Model):
     id = models.AutoField(primary_key=True)

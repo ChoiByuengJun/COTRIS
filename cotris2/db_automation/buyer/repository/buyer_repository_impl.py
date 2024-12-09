@@ -1,9 +1,7 @@
 from django.forms import model_to_dict
 
-
-
-from db_automation.buyer.entity.buyer import Buyer
-from db_automation.buyer.repository.buyer_repository import BuyerRepository
+from buyer.entity.buyer import Buyer
+from buyer.repository.buyer_repository import BuyerRepository
 
 class BuyerRepositoryImpl(BuyerRepository):
     __instance = None
