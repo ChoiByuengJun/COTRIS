@@ -22,8 +22,8 @@ class ProcessRepositoryImpl(ProcessRepository):
         return cls.__instance
     
     def process(self, fruit_amount, buyer_requirements):
-        fruitAmount=random.randint(fruit_amount, buyer_requirements)
-        process=Process(fruit_amount=fruitAmount, fruit_amount=fruit_amount, buyer_requirements=buyer_requirements)
+        fruitAmount = random.randint(fruit_amount, buyer_requirements)
+        buyerRequirements = Process(fruit_amount=fruitAmount, buyer_requirements=fruitAmount, buyer_requirements=buyer_requirements)
         process.save()
 
         return model_to_dict(process)

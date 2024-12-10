@@ -1,3 +1,5 @@
+from buyer.repository.buyer_repository_impl import BuyerRepositoryImpl
+from fruit.repository.fruit_repository_impl import FruitRepositoryImpl
 from order.repository.order_repository_impl import OrderRepositoryImpl
 from order.service.order_service import OrderService
 
@@ -9,8 +11,8 @@ class OrderServiceImpl(OrderService):
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
 
-            # cls.__instance.__buyerRepository = BuyerRepositoryImpl.getInstance()
-            # cls.__instance.__fruitRepository = FruitRepositoryImpl.getInstance()
+            cls.__instance.__buyerRepository = BuyerRepositoryImpl.getInstance()
+            cls.__instance.__fruitRepository = FruitRepositoryImpl.getInstance()
             cls.__instance.__orderRepository = OrderRepositoryImpl.getInstance()
 
         return cls.__instance
@@ -23,7 +25,7 @@ class OrderServiceImpl(OrderService):
         return cls.__instance
 
     def orderFruit(self, buyer, fruit):
-        buyer = self.__buyerRepository.getId()
+        buyer = self.__buyerRepository.getId(buyer)
         fruit = self.__fruitRepository.getId()
         return self.__orderRepository.order(buyer, fruit)
 
